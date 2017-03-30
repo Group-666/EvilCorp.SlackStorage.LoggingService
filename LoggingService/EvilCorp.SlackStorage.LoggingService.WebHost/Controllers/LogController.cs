@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EvilCorp.SlackStorage.LoggingService.WebHost.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class LogController : Controller
     {
         // GET api/values
         [HttpGet]
