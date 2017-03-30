@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26228.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.WebHost", "EvilCorp.SlackStorage.LoggingService.WebHost\EvilCorp.SlackStorage.LoggingService.WebHost.csproj", "{9F2F5403-15F5-47D5-9385-9EAB95ECE03E}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1044DA58-DFE8-45FC-9204-76732AD79F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.Application", "..\EvilCorp.SlackStorage.LoggingService.Application\EvilCorp.SlackStorage.LoggingService.Application.csproj", "{ED8AA0EC-A961-44D1-9A4F-8358540A3DFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1044DA58-DFE8-45FC-9204-76732AD79F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1044DA58-DFE8-45FC-9204-76732AD79F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1044DA58-DFE8-45FC-9204-76732AD79F84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED8AA0EC-A961-44D1-9A4F-8358540A3DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED8AA0EC-A961-44D1-9A4F-8358540A3DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED8AA0EC-A961-44D1-9A4F-8358540A3DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED8AA0EC-A961-44D1-9A4F-8358540A3DFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
