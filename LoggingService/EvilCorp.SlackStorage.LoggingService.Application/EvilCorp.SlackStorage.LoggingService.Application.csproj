@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EvilCorp.SlackStorage.LoggingService.DataAccess\EvilCorp.SlackStorage.LoggingService.DataAccess.csproj" />
+    <ProjectReference Include="..\EvilCorp.SlackStorage.LoggingService.DomainTypes\EvilCorp.SlackStorage.LoggingService.DomainTypes.csproj" />
+  </ItemGroup>
+
+</Project>
