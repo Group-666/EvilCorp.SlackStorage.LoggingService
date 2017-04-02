@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 
 namespace EvilCorp.SlackStorage.LoggingService.Application
 {
-    public class PersistWorkerContext
+    public class PersistWorkerContext : IPersistWorkerContext
     {
         public static PersistWorkerContext Current { get; } = new PersistWorkerContext();
 

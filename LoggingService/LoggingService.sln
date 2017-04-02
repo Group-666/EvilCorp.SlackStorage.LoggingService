@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.Loggi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.DomainTypes", "EvilCorp.SlackStorage.LoggingService.DomainTypes\EvilCorp.SlackStorage.LoggingService.DomainTypes.csproj", "{513B2FA5-5BE5-44CB-BBB7-FC90FE65543B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.UnitTest", "..\EvilCorp.SlackStorage.LoggingService.UnitTest\EvilCorp.SlackStorage.LoggingService.UnitTest.csproj", "{CE49ADCE-866A-415B-B7BC-82B09795F446}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{513B2FA5-5BE5-44CB-BBB7-FC90FE65543B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{513B2FA5-5BE5-44CB-BBB7-FC90FE65543B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{513B2FA5-5BE5-44CB-BBB7-FC90FE65543B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

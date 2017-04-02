@@ -10,18 +10,29 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost.Controllers
     [Route("api/[controller]")]
     public class LogController : Controller
     {
+        private readonly IPersistWorkerContext _context;
+
+        public LogController(IPersistWorkerContext context)
+        {
+            _context = context;
+        }
+
         [HttpPost]
-        public void Post([FromBody]JObject json)
+        public IActionResult Post([FromBody]JObject json)
         {
             try
             {
                 var log = LogParser.Parse(json);
 
-                PersistWorkerContext.Current.QueueOfWork.Enqueue(log);
+                _context.QueueOfWork.Enqueue(log);
+
+                return Ok();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+
+                return BadRequest(ex.Message);
             }
         }
     }

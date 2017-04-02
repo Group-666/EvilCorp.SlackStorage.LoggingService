@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using EvilCorp.SlackStorage.LoggingService.Application;
+using EvilCorp.SlackStorage.LoggingService.DataAccess;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace EvilCorp.SlackStorage.LoggingService.WebHost
 {
@@ -16,6 +19,13 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+
+            var connectionString = Configuration["DatabaseConnectionString"];
+            var repository = new LogRepository(connectionString);
+            var persistWorker = new PersistWorker(PersistWorkerContext.Current, repository);
+
+            Task.Run(() => persistWorker.Run());
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -23,6 +33,8 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IPersistWorkerContext, PersistWorkerContext>((provider) => PersistWorkerContext.Current);
+
             // Add framework services.
             services.AddMvc();
         }

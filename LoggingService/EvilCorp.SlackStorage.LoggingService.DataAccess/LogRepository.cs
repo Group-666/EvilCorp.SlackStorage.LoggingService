@@ -4,13 +4,13 @@ using MongoDB.Driver;
 
 namespace EvilCorp.SlackStorage.LoggingService.DataAccess
 {
-    public class LogRepository
+    public class LogRepository : ILogRepository
     {
         private readonly string _connectionString;
-
-        public LogRepository()
+        
+        public LogRepository(string connectionString)
         {
-            _connectionString = "mongodb://10.0.0.10:32768";
+            _connectionString = connectionString;
         }
 
         public async Task Add(LogEntry log)

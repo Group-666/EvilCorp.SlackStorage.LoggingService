@@ -9,18 +9,20 @@ namespace EvilCorp.SlackStorage.LoggingService.Application
 {
     public class PersistWorker
     {
-        private readonly LogRepository _repository;
+        private readonly IPersistWorkerContext _context;
+        private readonly ILogRepository _repository;
 
-        public  PersistWorker()
+        public  PersistWorker(IPersistWorkerContext context, ILogRepository repository)
         {
-            _repository = new LogRepository();
+            _context = context;
+            _repository = repository;
         }
 
         public async Task Run()
         {
             while(true)
             {
-                await ProcessQueue(PersistWorkerContext.Current.QueueOfWork);
+                await ProcessQueue(_context.QueueOfWork);
 
                 await Task.Delay(new TimeSpan(0, 0, 1));
             }
