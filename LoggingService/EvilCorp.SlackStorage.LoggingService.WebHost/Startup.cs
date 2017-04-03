@@ -1,5 +1,4 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.Application;
-using EvilCorp.SlackStorage.LoggingService.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,10 +21,8 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost
 
 
             var connectionString = Configuration["DatabaseConnectionString"];
-            var repository = new LogRepository(connectionString);
-            var persistWorker = new PersistWorker(PersistWorkerContext.Current, repository);
-
-            Task.Run(() => persistWorker.Run());
+            var factory = new PersistWorkerFactory();
+            Task.Run(() => factory.CreateWorker(connectionString).Run());
         }
 
         public IConfigurationRoot Configuration { get; }
