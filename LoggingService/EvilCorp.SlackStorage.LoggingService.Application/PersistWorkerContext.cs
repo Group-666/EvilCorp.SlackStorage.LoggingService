@@ -1,5 +1,4 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.DomainTypes;
-using System;
 using System.Collections.Concurrent;
 
 namespace EvilCorp.SlackStorage.LoggingService.Application
