@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EvilCorp.SlackStorage.LoggingService.WebHost
@@ -22,7 +23,9 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost
 
             var connectionString = Configuration["DatabaseConnectionString"];
             var factory = new PersistWorkerFactory();
-            Task.Run(() => factory.CreateWorker(connectionString).Run());
+            var token = new CancellationToken();
+
+            Task.Run(() => factory.CreateWorker(connectionString).Run(token));
         }
 
         public IConfigurationRoot Configuration { get; }

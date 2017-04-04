@@ -3,6 +3,7 @@ using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EvilCorp.SlackStorage.LoggingService.Application
@@ -18,27 +19,27 @@ namespace EvilCorp.SlackStorage.LoggingService.Application
             _repository = repository;
         }
 
-        public async Task Run()
+        public async Task Run(CancellationToken token)
         {
-            while(true)
+            while(!token.IsCancellationRequested)
             {
-                await ProcessQueue(_context.QueueOfWork);
+                await ProcessQueue();
 
                 await Task.Delay(new TimeSpan(0, 0, 1));
             }
         }
 
-        private async Task ProcessQueue(ConcurrentQueue<LogEntry> queueOfWork)
+        private async Task ProcessQueue()
         {
-            while (queueOfWork.TryDequeue(out LogEntry log))
+            while (_context.QueueOfWork.TryDequeue(out LogEntry log))
             {
                 try
                 {
                     await _repository.Add(log);
                 }
-                catch (Exception ex)
+                catch (InvalidProgramException exception)
                 {
-                    Debug.WriteLine(ex);
+                    Debug.WriteLine(exception);
                 }
             }
         }

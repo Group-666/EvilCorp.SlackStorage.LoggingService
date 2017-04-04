@@ -1,4 +1,5 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.DataAccess;
+using MongoDB.Driver;
 
 namespace EvilCorp.SlackStorage.LoggingService.Application
 {
@@ -7,6 +8,7 @@ namespace EvilCorp.SlackStorage.LoggingService.Application
         public PersistWorker CreateWorker(string connectionString)
             => new PersistWorker(
                 PersistWorkerContext.Current, 
-                new LogRepository(connectionString));
+                new LogRepository(
+                    new MongoClient(connectionString)));
     }
 }

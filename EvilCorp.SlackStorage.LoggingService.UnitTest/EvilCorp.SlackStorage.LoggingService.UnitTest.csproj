@@ -6,14 +6,20 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.4.3" />
+    <PackageReference Include="Moq" Version="4.7.8" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="DataAccess\" />
-    <Folder Include="DomainTypes\" />
+    <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.Application\EvilCorp.SlackStorage.LoggingService.Application.csproj" />
+    <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.DataAccess\EvilCorp.SlackStorage.LoggingService.DataAccess.csproj" />
+    <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.DomainTypes\EvilCorp.SlackStorage.LoggingService.DomainTypes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
 </Project>

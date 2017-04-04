@@ -1,25 +1,32 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.DomainTypes;
-using System.Threading.Tasks;
 using MongoDB.Driver;
+using System;
+using System.Threading.Tasks;
 
 namespace EvilCorp.SlackStorage.LoggingService.DataAccess
 {
     public class LogRepository : ILogRepository
     {
-        private readonly string _connectionString;
+        private readonly IMongoClient _client;
         
-        public LogRepository(string connectionString)
+        public LogRepository(IMongoClient client)
         {
-            _connectionString = connectionString;
+            _client = client;
         }
 
         public async Task Add(LogEntry log)
         {
-            var client = new MongoClient(_connectionString);
-            var db = client.GetDatabase("LoggingService");
-            var collection = db.GetCollection<LogEntry>("Logs");
+            try
+            {
+                var db = _client.GetDatabase("LoggingService");
+                var collection = db.GetCollection<LogEntry>("Logs");
 
-            await collection.InsertOneAsync(log);
+                await collection.InsertOneAsync(log);
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidProgramException("There was a problem inserting log entry.", exception);
+            }
         }
     }
 }
