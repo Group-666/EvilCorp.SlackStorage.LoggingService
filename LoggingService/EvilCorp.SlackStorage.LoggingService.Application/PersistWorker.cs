@@ -1,7 +1,6 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.DataAccess;
 using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using System;
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
