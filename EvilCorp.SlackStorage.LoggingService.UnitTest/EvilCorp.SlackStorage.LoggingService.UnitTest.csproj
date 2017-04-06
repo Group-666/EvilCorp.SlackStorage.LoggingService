@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.Application\EvilCorp.SlackStorage.LoggingService.Application.csproj" />
+    <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.Contract\EvilCorp.SlackStorage.LoggingService.Contract.csproj" />
     <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.DataAccess\EvilCorp.SlackStorage.LoggingService.DataAccess.csproj" />
     <ProjectReference Include="..\LoggingService\EvilCorp.SlackStorage.LoggingService.DomainTypes\EvilCorp.SlackStorage.LoggingService.DomainTypes.csproj" />
   </ItemGroup>

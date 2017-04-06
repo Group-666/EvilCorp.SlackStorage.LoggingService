@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvilCorp.SlackStorage.LoggingService.WebHost", "EvilCorp.SlackStorage.LoggingService.WebHost\EvilCorp.SlackStorage.LoggingService.WebHost.csproj", "{9F2F5403-15F5-47D5-9385-9EAB95ECE03E}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.DomainTypes", "EvilCorp.SlackStorage.LoggingService.DomainTypes\EvilCorp.SlackStorage.LoggingService.DomainTypes.csproj", "{513B2FA5-5BE5-44CB-BBB7-FC90FE65543B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.UnitTest", "..\EvilCorp.SlackStorage.LoggingService.UnitTest\EvilCorp.SlackStorage.LoggingService.UnitTest.csproj", "{CE49ADCE-866A-415B-B7BC-82B09795F446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvilCorp.SlackStorage.LoggingService.Contract", "EvilCorp.SlackStorage.LoggingService.Contract\EvilCorp.SlackStorage.LoggingService.Contract.csproj", "{65F0BBF8-194A-45CE-B24F-8951BE5A7A01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE49ADCE-866A-415B-B7BC-82B09795F446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F0BBF8-194A-45CE-B24F-8951BE5A7A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F0BBF8-194A-45CE-B24F-8951BE5A7A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F0BBF8-194A-45CE-B24F-8951BE5A7A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F0BBF8-194A-45CE-B24F-8951BE5A7A01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
