@@ -3,7 +3,9 @@ using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace EvilCorp.SlackStorage.LoggingService.WebHost.Controllers
 {
@@ -11,10 +13,12 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost.Controllers
     public class LogController : Controller
     {
         private readonly IPersistWorkerContext _context;
+        private readonly LogFacade _facade;
 
-        public LogController(IPersistWorkerContext context)
+        public LogController(IPersistWorkerContext context, LogFacade facade)
         {
             _context = context;
+            _facade = facade;
         }
 
         [HttpPost]
@@ -33,6 +37,21 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost.Controllers
                 Debug.WriteLine(ex);
 
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<LogEntry>> Get()
+        {
+            try
+            {
+                return await _facade.GetAllEntriesOrdered();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+
+                return new LogEntry[0];
             }
         }
     }

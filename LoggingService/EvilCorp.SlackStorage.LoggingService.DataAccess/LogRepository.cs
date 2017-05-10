@@ -1,6 +1,7 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace EvilCorp.SlackStorage.LoggingService.DataAccess
@@ -26,6 +27,21 @@ namespace EvilCorp.SlackStorage.LoggingService.DataAccess
             catch (Exception exception)
             {
                 throw new InvalidProgramException("There was a problem inserting log entry.", exception);
+            }
+        }
+
+        public async Task<IEnumerable<LogEntry>> GetAll()
+        {
+            try
+            {
+                var db = _client.GetDatabase("LoggingService");
+                var collection = db.GetCollection<LogEntry>("Logs");
+
+                return await collection.Find(Builders<LogEntry>.Filter.Empty).ToListAsync();
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidProgramException("There was a problem getting all log entries.", exception);
             }
         }
     }

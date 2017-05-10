@@ -14,7 +14,7 @@ namespace EvilCorp.SlackStorage.LoggingService.DomainTypes
             if (level < 1 || level > 5)
                 throw new ArgumentException("The log level is not supported.");
 
-            return new LogEntry(component, message, (LogLevel)level);
+            return new LogEntry(component, message, DateTime.Now, (LogLevel)level);
         }
     }
 }

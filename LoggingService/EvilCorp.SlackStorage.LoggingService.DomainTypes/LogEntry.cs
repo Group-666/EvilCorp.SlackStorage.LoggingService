@@ -4,11 +4,12 @@ namespace EvilCorp.SlackStorage.LoggingService.DomainTypes
 {
     public class LogEntry
     {
-        public LogLevel Type { get; } 
         public string Component { get; }
         public string Message { get; }
+        public DateTime Timestamp { get; }
+        public LogLevel Type { get; }
 
-        public LogEntry(string component, string message, LogLevel type)
+        public LogEntry(string component, string message, DateTime timestamp, LogLevel type)
         {
             if (string.IsNullOrEmpty(component))
                 throw new ArgumentException("The component cannot be null or empty.", nameof(component));
@@ -17,6 +18,7 @@ namespace EvilCorp.SlackStorage.LoggingService.DomainTypes
 
             Component = component;
             Message = message;
+            Timestamp = timestamp;
             Type = type;
         }
     }

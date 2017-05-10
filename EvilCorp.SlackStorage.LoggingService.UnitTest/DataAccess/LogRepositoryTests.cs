@@ -3,6 +3,7 @@ using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Driver;
 using Moq;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest.DataAccess
         [TestMethod, TestCategory("DataAccess")]
         public void LogRepository_Adds_Currectly()
         {
-            var logEntry = new LogEntry("TestService", "Test message.", LogLevel.Trace);
+            var logEntry = new LogEntry("TestService", "Test message.", DateTime.Now, LogLevel.Trace);
             var clientMock = CreateMongoMock(logEntry);
 
             var sut = new LogRepository(clientMock);

@@ -14,6 +14,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest
             var entry = new LogEntry(
                 string.Empty,
                 "Test message",
+                DateTime.Now,
                 LogLevel.Trace);
         }
 
@@ -24,6 +25,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest
             var entry = new LogEntry(
                 "TestService",
                 string.Empty,
+                DateTime.Now,
                 LogLevel.Trace);
         }
 
@@ -34,7 +36,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest
             const string message = "Test message.";
             const LogLevel level = LogLevel.Critical;
 
-            var entry = new LogEntry(component, message, level);
+            var entry = new LogEntry(component, message, DateTime.Now, level);
 
             Assert.AreEqual(component, entry.Component);
             Assert.AreEqual(message, entry.Message);

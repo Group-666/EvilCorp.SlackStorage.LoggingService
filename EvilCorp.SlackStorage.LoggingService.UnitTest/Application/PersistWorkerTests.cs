@@ -3,6 +3,7 @@ using EvilCorp.SlackStorage.LoggingService.DataAccess;
 using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest.Application
         [TestMethod, TestCategory("Application")]
         public void PersistWorker_ProcessEntry_Currectly()
         {
-            var log = new LogEntry("TestService", "Test message", LogLevel.Trace);
+            var log = new LogEntry("TestService", "Test message", DateTime.Now, LogLevel.Trace);
             var tokenSource = new CancellationTokenSource();
             var contextMock = CreateContextMock(log);
             var repositoryMock = CreateRepositoryMock(log);

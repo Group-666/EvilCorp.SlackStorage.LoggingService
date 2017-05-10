@@ -13,7 +13,7 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
-                .UseUrls("http://0.0.0.0:5050")
+                .UseUrls("http://0.0.0.0:8085")
                 .Build();
 
             host.Run();
