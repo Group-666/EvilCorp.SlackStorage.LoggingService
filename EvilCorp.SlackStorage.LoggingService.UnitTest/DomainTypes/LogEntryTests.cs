@@ -40,7 +40,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest
 
             Assert.AreEqual(component, entry.Component);
             Assert.AreEqual(message, entry.Message);
-            Assert.AreEqual(level, entry.Type);
+            Assert.AreEqual(level, entry.Level);
         }
     }
 }

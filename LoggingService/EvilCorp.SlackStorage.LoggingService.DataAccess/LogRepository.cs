@@ -1,8 +1,13 @@
 ﻿using EvilCorp.SlackStorage.LoggingService.DomainTypes;
 using MongoDB.Driver;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.IO;
+using MongoDB.Bson.Serialization;
 
 namespace EvilCorp.SlackStorage.LoggingService.DataAccess
 {
@@ -20,9 +25,9 @@ namespace EvilCorp.SlackStorage.LoggingService.DataAccess
             try
             {
                 var db = _client.GetDatabase("LoggingService");
-                var collection = db.GetCollection<LogEntry>("Logs");
+                var collection = db.GetCollection<LogEntryDto>("Logs");
 
-                await collection.InsertOneAsync(log);
+                await collection.InsertOneAsync(LogEntryDto.Parse(log));
             }
             catch (Exception exception)
             {
@@ -35,9 +40,10 @@ namespace EvilCorp.SlackStorage.LoggingService.DataAccess
             try
             {
                 var db = _client.GetDatabase("LoggingService");
-                var collection = db.GetCollection<LogEntry>("Logs");
+                var collection = db.GetCollection<LogEntryDto>("Logs");
+                var documents = await collection.Find(Builders<LogEntryDto>.Filter.Empty).ToListAsync();
 
-                return await collection.Find(Builders<LogEntry>.Filter.Empty).ToListAsync();
+                return documents.Select(d => LogEntryDto.Parse(d));
             }
             catch (Exception exception)
             {

@@ -97,7 +97,7 @@ namespace EvilCorp.SlackStorage.LoggingService.UnitTest.DomainTypes
 
             Assert.AreEqual(json["component"], result.Component);
             Assert.AreEqual(json["message"], result.Message);
-            Assert.AreEqual(LogLevel.Trace, result.Type);
+            Assert.AreEqual(LogLevel.Trace, result.Level);
         }
     }
 }

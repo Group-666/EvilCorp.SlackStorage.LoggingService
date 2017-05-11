@@ -34,6 +34,7 @@ namespace EvilCorp.SlackStorage.LoggingService.WebHost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IPersistWorkerContext, PersistWorkerContext>((provider) => PersistWorkerContext.Current);
+            services.AddTransient<LogFacade, LogFacade>((provider) => new LogFacade(Configuration["DatabaseConnectionString"]));
 
             // Add framework services.
             services.AddMvc();

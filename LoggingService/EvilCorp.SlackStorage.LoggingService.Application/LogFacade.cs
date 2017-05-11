@@ -18,7 +18,7 @@ namespace EvilCorp.SlackStorage.LoggingService.Application
 
         public async Task<IEnumerable<LogEntry>> GetAllEntriesOrdered()
         {
-            return (await _repository.GetAll()).OrderBy(l => l.Timestamp);
+            return (await _repository.GetAll()).OrderByDescending(l => l.Timestamp);
         }
     }
 }
